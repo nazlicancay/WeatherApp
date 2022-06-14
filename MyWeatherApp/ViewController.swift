@@ -34,11 +34,58 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        SetUpUI()
+        fetchData()
+        
+    }
+    
+    private func fetchData( ){
+        /// fecthing Apı data
         
     }
 
     @IBAction private func refreshButtonPressed(_ sender: Any) {
+        fetchData()
     }
     
+    private func SetUpUI(){
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(.init(nibName: "WeatherCell", bundle: nil), forCellWithReuseIdentifier: "WeatherCell")
+    }
+}
+
+extension ViewController : UICollectionViewDelegate{
+    
+}
+
+extension ViewController : UICollectionViewDataSource{
+    
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WeatherCell", for: indexPath) as! WeatherCell
+        
+        if indexPath.row == 0 {
+            cell.MoveUp()
+        }
+        else{
+            cell.MoveDown()
+        }
+        
+        return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 8
+        
+    }
+    
+   
+}
+extension ViewController : UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return .init(width: 120, height: 186)
+    }
 }
 

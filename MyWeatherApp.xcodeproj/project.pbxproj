@@ -18,6 +18,7 @@
 		6280F904284B6C510049370F /* MyWeatherAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6280F903284B6C510049370F /* MyWeatherAppTests.swift */; };
 		6280F90E284B6C510049370F /* MyWeatherAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6280F90D284B6C510049370F /* MyWeatherAppUITests.swift */; };
 		6280F910284B6C510049370F /* MyWeatherAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6280F90F284B6C510049370F /* MyWeatherAppUITestsLaunchTests.swift */; };
+		629F4C8D28594C7700E103E4 /* JsonObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629F4C8C28594C7700E103E4 /* JsonObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		6280F909284B6C510049370F /* MyWeatherAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyWeatherAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6280F90D284B6C510049370F /* MyWeatherAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWeatherAppUITests.swift; sourceTree = "<group>"; };
 		6280F90F284B6C510049370F /* MyWeatherAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWeatherAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		629F4C8C28594C7700E103E4 /* JsonObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				6280F8F5284B6C510049370F /* Assets.xcassets */,
 				6280F8F7284B6C510049370F /* LaunchScreen.storyboard */,
 				6280F8FA284B6C510049370F /* Info.plist */,
+				629F4C8C28594C7700E103E4 /* JsonObject.swift */,
 			);
 			path = MyWeatherApp;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 				623B8689285801B100B6190B /* WeatherCell.swift in Sources */,
 				6280F8F1284B6C4F0049370F /* ViewController.swift in Sources */,
 				6280F8ED284B6C4F0049370F /* AppDelegate.swift in Sources */,
+				629F4C8D28594C7700E103E4 /* JsonObject.swift in Sources */,
 				6280F8EF284B6C4F0049370F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

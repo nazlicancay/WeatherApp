@@ -31,6 +31,8 @@ class ViewController: UIViewController {
     
     @IBOutlet private weak var pressureValueLabel: UILabel!
     
+    private var hourly:[HourlyWeather] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +43,29 @@ class ViewController: UIViewController {
     
     private func fetchData( ){
         /// fecthing Apı data
-        
+        if let url = URL.init(string: "api.openiweathermap.org/data/2.5/onecall?lat=39.3123&lon= 26.1232&exclude=daily&appid=8f916d970abee3b68204508eenb3695a"){
+            let task = URLSession.shared.dataTask(with: url) {[unowned self]
+                data, response , error in
+                do {
+                    guard let data = data else {
+                        return
+                    }
+
+                    let objects = try JSONDecoder().decode(Weather.self, from: data)
+                    self.hourly = objects.hourly ?? []
+                    
+                    DispatchQueue.main.async {
+                        self.collectionView.reloadData()
+                    }
+                    
+                } catch {
+                    print(error)
+                }
+              
+            }
+            task.resume()
+        }
+      
     }
 
     @IBAction private func refreshButtonPressed(_ sender: Any) {
@@ -65,6 +89,10 @@ extension ViewController : UICollectionViewDataSource{
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WeatherCell", for: indexPath) as! WeatherCell
+        let rowItem = hourly[indexPath.row]
+        cell.degreeLabel.text = "\((rowItem.temp ?? 0) - 273)"
+        cell.hourLabel.text = "\(rowItem.dt ?? 0 )"
+        
         
         if indexPath.row == 0 {
             cell.MoveUp()
@@ -76,7 +104,7 @@ extension ViewController : UICollectionViewDataSource{
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8
+        return hourly.count
         
     }
     
